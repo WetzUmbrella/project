@@ -38,6 +38,7 @@ def win_condition(w):
     else:
         pass
 
+
 def win_screen(player, game):
     global combination
     combination = ["", "", "", "", "", "", "", "", ""]
@@ -45,6 +46,7 @@ def win_screen(player, game):
     ttk.Label(frm, text=f"Player {player} Wins", font=("Arial", 18), anchor="center").grid(column=0, row=0)
     ttk.Button(frm, text="Restart", command=game, style="Large.TButton").grid(column=0, row=1)
     ttk.Button(frm, text="Quit", command=root.destroy, style="Large.TButton").grid(column=0, row=2)
+
 
 def tie_screen(game):
     global combination
@@ -104,7 +106,6 @@ def PVA():
     ttk.Button(frm, text="Quit", command=root.destroy).grid(column=2, row=4)
 
 
-
 def main():
     global root
     root = Tk()
@@ -133,7 +134,6 @@ def main():
     ttk.Button(frm, text="Quit", command=root.destroy, style="Large.TButton").grid(column=0, row=3)
     
     root.mainloop()
-
 
 
 if __name__ == "__main__":
