@@ -25,9 +25,9 @@ def button_click(button, position):
             button['text'] = "O"
             combination[position] = "O"
         x_player = not x_player
+        win_condition(combination)
         if x_player == False and game == PVA:
             ai_move()
-        win_condition(combination)
 
 
 def win_condition(w):
@@ -86,7 +86,6 @@ def tic_tac_toe_grid():
 
 def ai_move():
     position = random.randint(0, 8)
-    print(position)
     if combination[position] == "":
         match position:
             case 0:
@@ -122,7 +121,7 @@ def PVP():
     else:
         ttk.Label(frm, text="Player O start first", font=("Arial", 18), anchor="center").grid(column=1, row=0)
     tic_tac_toe_grid()
-    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=2, row=4)
+    ttk.Button(frm, text="Main Menu", command=main).grid(column=2, row=4)
 
 
 def PVA():
