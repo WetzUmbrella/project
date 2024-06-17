@@ -25,6 +25,8 @@ def button_click(button, position):
             button['text'] = "O"
             combination[position] = "O"
         x_player = not x_player
+        if x_player == False and game == PVA:
+            ai_move()
         win_condition(combination)
 
 
@@ -58,6 +60,8 @@ def tie_screen(game):
 
 
 def tic_tac_toe_grid():
+    global button1, button2, button3, button4, button5, button6, button7, button8, button9
+
     button1 = ttk.Button(frm, text="", style="Large.TButton", command=lambda: button_click(button1, 0))
     button1.grid(row=1, column=0, padx=5, pady=5, sticky=(N, S, E, W))
     button2 = ttk.Button(frm, text="", style="Large.TButton", command=lambda: button_click(button2, 1))
@@ -78,6 +82,34 @@ def tic_tac_toe_grid():
     button8.grid(row=3, column=1, padx=5, pady=5, sticky=(N, S, E, W))
     button9 = ttk.Button(frm, text="", style="Large.TButton", command=lambda: button_click(button9, 8))
     button9.grid(row=3, column=2, padx=5, pady=5, sticky=(N, S, E, W))
+
+
+def ai_move():
+    position = random.randint(0, 8)
+    print(position)
+    if combination[position] == "":
+        match position:
+            case 0:
+                button = button1
+            case 1:
+                button = button2
+            case 2:
+                button = button3
+            case 3:
+                button = button4
+            case 4:
+                button = button5
+            case 5:
+                button = button6
+            case 6:
+                button = button7
+            case 7:
+                button = button8
+            case 8:
+                button = button9
+        button.invoke()
+    else:
+        ai_move()
 
 
 def PVP():
@@ -104,6 +136,8 @@ def PVA():
         ttk.Label(frm, text="Player O start first", font=("Arial", 18), anchor="center").grid(column=1, row=0)
     tic_tac_toe_grid()
     ttk.Button(frm, text="Quit", command=root.destroy).grid(column=2, row=4)
+    if not x_player:
+        ai_move()
 
 
 def main():
